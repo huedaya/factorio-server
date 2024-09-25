@@ -15,4 +15,7 @@ services:
       - FACTORIO_AUTO_SAVE_INTERVAL=10  # Auto-save interval in minutes
       - FACTORIO_ALLOW_INCOMPATIBLE_MODS=true  # Allow incompatible mods
     restart: unless-stopped
-
+    deploy:
+      resources:
+        limits:
+          memory: 100M
