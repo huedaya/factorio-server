@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   factorio:
-    build: .
+    image: factoriotools/factorio:latest
     container_name: factorio-server
     ports:
       - "34197:34197/udp"  # Game port
