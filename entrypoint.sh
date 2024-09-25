@@ -19,13 +19,13 @@ mkfifo ${FIFO_NAME}
 # Check if there's an existing game - create one if not
 if [ ! -f "$(cat last-game.txt 2> /dev/null)" ]; then
     SAVE_FILE="factorio-save-$(date +"%Y_%m_%d_%I_%M_%p").zip"
-    ./factorio/bin/x64/factorio --create ./saves/${SAVE_FILE} 2>&1 | tee ${LOG_FILE}
+    ./app/factorio/bin/x64/factorio --create ./saves/${SAVE_FILE} 2>&1 | tee ${LOG_FILE}
     echo "./saves/${SAVE_FILE}" > last-game.txt
 fi
 
 # Start the server and track the process ID
 rm ${FACTORIO_PID_FILE} > /dev/null 2>&1
-./factorio/bin/x64/factorio --start-server $(cat last-game.txt) > ${LOG_FILE} 2>&1 < ${FIFO_NAME} &
+./app/factorio/bin/x64/factorio --start-server $(cat last-game.txt) > ${LOG_FILE} 2>&1 < ${FIFO_NAME} &
 echo $! > ${FACTORIO_PID_FILE}
 
 # Kick off the server and pass keystrokes to the server process' stdin
