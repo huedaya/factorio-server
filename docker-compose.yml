@@ -19,3 +19,5 @@ services:
       resources:
         limits:
           memory: 240M
+    tty: true                   # Allocate a pseudo-TTY
+    stdin_open: true            # Keep stdin open
