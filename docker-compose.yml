@@ -8,9 +8,9 @@ services:
       - "34197:34197/udp"  # Game port
       - "27015:27015/tcp"  # Query port
     volumes:
-      - ~/factorio-server:/factorio
+      - ~/factorio-server:/app/factorio
     environment:
-      - FACTORIO_SERVER_SETTINGS=/factorio/server-settings.json
+      - FACTORIO_SERVER_SETTINGS=/app/factorio/server-settings.json
       - FACTORIO_SERVER_NAME=MyFactorioServer
       - FACTORIO_AUTO_SAVE_INTERVAL=10  # Auto-save interval in minutes
       - FACTORIO_ALLOW_INCOMPATIBLE_MODS=true  # Allow incompatible mods
