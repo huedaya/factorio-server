@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  factorio:
+    image: factoriotools/factorio:latest
+    container_name: factorio-server
+    ports:
+      - "34197:34197/udp"  # Game port
+      - "27015:27015/tcp"  # Query port
+    volumes:
+      - ~/factorio-server:/factorio
+    environment:
+      - FACTORIO_SERVER_SETTINGS=/factorio/server-settings.json
+      - FACTORIO_SERVER_NAME=MyFactorioServer
+      - FACTORIO_AUTO_SAVE_INTERVAL=10  # Auto-save interval in minutes
+      - FACTORIO_ALLOW_INCOMPATIBLE_MODS=true  # Allow incompatible mods
+    restart: unless-stopped
+
